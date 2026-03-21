@@ -1,0 +1,23 @@
+services:
+  web:
+    build: .
+    command: gunicorn backend.asgi:application -k  uvicorn.workers.UvicornWorker --bind 0.0.0.0:8000
+    volumes:
+      - .:/app
+    ports:
+      - "8000:8000"
+    env_file:
+      - .env
+    depends_on:
+      - db
+      - redis
+  db:
+    image: postgres:16
+    volumes:
+      - postgres_data:/var/lib/postgresql/data   
+    env_file:
+      - .env         
+  redis:
+    image: redis:7
+volumes:
+  postgres_data:        

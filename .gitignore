@@ -207,3 +207,12 @@ cython_debug/
 marimo/_static/
 marimo/_lsp/
 __marimo__/
+
+# Gunicorn control socket
+gunicorn.ctl
+
+# Docker / runtime
+*.pid
+*.sock
+*.swp
+*.tmp
