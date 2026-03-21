@@ -4,4 +4,4 @@ COPY requirements.txt /app/
 RUN pip install --no-cache-dir -r requirements.txt
 COPY . /app/
 EXPOSE 8000
-CMD [ "gunicorn", "backend.asgi:application" "-k"  "uvicorn.workers.UvicornWorker" "--bind" "0.0.0.0:8000" ]
+CMD [ "gunicorn", "backend.asgi:application", "-k", "uvicorn.workers.UvicornWorker", "--bind", "0.0.0.0:8000" ]
